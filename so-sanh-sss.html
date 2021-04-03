@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Blog of Kien</title>
+    <link rel="stylesheet" href="resource/main.css" />
+    <script src="resource/main.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <h1>So sánh sự khác nhau giữa slice - substring - substr</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="so-sanh.html">So sánh sự khác nhau giữa let và var</a></li>
+            <li ><a class="nav-active" href="so-sanh-sss.html">So sánh sự khác nhau giữa slice, substring, substr</a></li>
+            <li><a href="moment.html">MomentJS</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h4>Slice - Substring - Substr</h4>
+        <pre><code>
+    Sự khác biệt giữa hàm String#substring()và String#substr()là một nguồn nhầm lẫn phổ biến. Ngay cả những nhà phát triển JavaScript có kinh nghiệm đôi khi cũng trộn lẫn chúng với nhau. Ngoài ra còn có một cách thứ ba để lấy một chuỗi con, String#slice()hàm , mà bạn có thể thấy trong tự nhiên. Trong hướng dẫn này, bạn sẽ tìm hiểu sự khác biệt giữa 3 cách này để lấy chuỗi con trong JavaScript.
+
+    String#substring()
+    Các substring()chức năng là cách phổ biến nhất để có được một chuỗi trong JavaScript. Nó có hai tham số: indexStartvà indexEnd. Nó trả về phần của chuỗi bắt đầu indexStartvà kết thúc ký tự ngay trước đó indexEnd. Ví dụ:
+
+    const str = 'Twas the night before Christmas';
+
+    let indexStart = 0;
+    let indexEnd = 4;
+    str.substring(indexStart, indexEnd); // 'Twas'
+
+    str.substring(5, 14); // 'the night'
+    Nếu bạn không chỉ định indexEnd, substring()hàm trả về phần còn lại của chuỗi bắt đầu từ indexStart.
+
+    str.substring(5); // 'the night before Christmas'
+    Các substring()chức năng có một số hành vi kỳ quặc trong trường hợp cạnh:
+
+    Nếu indexStarthoặc indexEndnhỏ hơn 0, nó được coi là 0.
+    Nếu indexEnd < indexStart, cả hai được đổi chỗ cho nhau.
+    Ví dụ, substring(4, -1)tương đương với substring(4, 0), lần lượt tương đương với substring(0, 4)như hình dưới đây.
+
+    str.substring(4, -1); // 'Twas'
+    String#substr()
+    Các substr()chức năng cũng là phổ biến, nhưng nó được coi là một "chức năng di sản" trong tài liệu của Mozilla . Bạn không nên sử dụng nó khi viết mã mới, nhưng bạn có thể thấy nó trong các dự án JavaScript hiện có.
+
+    Sự khác biệt chính giữa substring()và substr()là substr()có tham số thứ 2 khác nhau. Tham số đầu tiên substr()là startvà tham số thứ 2 là length. Ví dụ:
+
+    const str = 'Twas the night before Christmas';
+
+    let start = 0;
+    let length = 4;
+    // If `start === 0`, `substr()` and `substring()` are equivalent
+    str.substr(start, length); // 'Twas'
+
+    str.substr(5, 9); // 'the night'
+    'the night'.length; // 9
+    Không giống như substring(), bạn có thể gọi substr()với một phủ định start. Điều đó sẽ làm cho việc substr()bắt đầu đếm ở cuối chuỗi thay vì bắt đầu. Ví dụ:
+
+    const str = 'Twas the night before Christmas';
+
+    let start = -9;
+    let length = 9;
+    str.substr(start, length); // 'Christmas'
+
+    'Christmas'.length; // 9
+    String#slice()
+    Các slice()chức năng là ít phổ biến hơn substring()và substr(). Tuy nhiên, nó có những khía cạnh tốt nhất của cả hai substring()và substr(). Giống như substring(), slice()hàm lấy chỉ số bắt đầu và kết thúc làm tham số và không được coi là một hàm kế thừa. Giống như substr(), slice()hàm hỗ trợ các chỉ số âm. Ví dụ:
+
+    const str = 'Twas the night before Christmas';
+
+    str.slice(0, 4); // Twas
+    str.slice(5, 14); // the night
+    str.slice(-16, -10); // before
+    str.slice(-9); // Christmas
+    Các slice()chức năng có vẻ như ra chiến thắng rõ ràng của 3:
+
+    Không được coi là "chức năng kế thừa"
+    Hỗ trợ các chỉ số phủ định
+    Ít nhầm lẫn tên hơn: không có String#splice()
+</code></pre>
+    </article>
+</body>
+</html>

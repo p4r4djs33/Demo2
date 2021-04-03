@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Blog of Kien</title>
+    <link rel="stylesheet" href="resource/main.css" />
+    <script src="resource/main.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <h1>MomentJS</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="so-sanh.html">So sánh sự khác nhau giữa let và var</a></li>
+            <li><a href="so-sanh-sss.html">So sánh sự khác nhau giữa slice, substring, substr</a></li>
+            <li ><a class="nav-active" href="moment.html">MomentJS</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h4>MomentJS</h4>
+        <pre><code>
+    Moment.js
+    Moment.js là một thư viện mạnh dùng để thao tác xử lý datetime trong javascript.
+    Moment.js được thiết kế hoạt động trong cả browser và Node.js
+    Có thể tải moment.js tại đây Cài đặt moment.js
+    npm install moment --save   # npm
+    yarn add moment             # Yarn
+    Install-Package Moment.js   # NuGet
+    spm install moment --save   # spm
+    meteor add momentjs:moment  # meteor
+    bower install moment --save # bower (deprecated)
+    Parse
+    Thay vì sửa đổi Date.prototype nguyên bản, Moment.js tạo một wrapper cho Date object. Để có được đối tượng wrapper này, chỉ cần gọi moment () với một trong các loại đầu vào được hỗ trợ.
+
+    Moment.prototype được thể hiện qua moment.fn . Nếu bạn muốn thêm các chức năng của riêng bạn, đó là nơi bạn sẽ đặt chúng.
+
+    Để dễ tham chiếu, bất kỳ phương pháp nào trên Moment.prototype sẽ được tham chiếu trong các tài liệu như moment#method. Nên Moment.prototype.format == moment.fn.format == moment#format.
+
+    Now
+    Cú pháp moment(); Để có được ngày và giờ hiện tại, chỉ cần gọi moment () mà không có tham số. var now = moment();
+
+    String
+    Cú pháp: moment(String); Ví dụ: var day = moment("1995-12-25");
+
+    String + Format
+    Định dạng moment theo chuẩn quy định Cú pháp:
+
+    moment(String, String);
+    moment(String, String, String);
+    moment(String, String, Boolean);
+    moment(String, String, String, Boolean);
+    Nếu bạn biết định dạng của một chuỗi đầu vào, bạn có thể sử dụng nó để phân tích một thời điểm.
+
+    moment("12-25-1995", "MM-DD-YYYY");
+
+    String + Formats
+    Cú pháp: moment(String, String[], String, Boolean);
+
+    Nếu bạn không biết định dạng chính xác của một chuỗi đầu vào, nhưng biết nó có thể là một trong nhiều, bạn có thể sử dụng một mảng các định dạng. Ví dụ: moment("12-25-1995", ["MM-DD-YYYY", "YYYY-MM-DD"]);
+
+    Date
+    Cú pháp: moment(Date); Bạn có thể tạo Moment với đối tượng Javascript Date native sẵn có. Ví dụ:
+
+    var day = new Date(2011, 9, 16);
+    var dayWrapper = moment(day);
+    Array
+    Cú pháp: moment(Number[]);
+
+    Bạn có thể tạo ra một moment với một mảng các con số phản chiếu các tham số được truyền đến new Date() [year, month, day, hour, minute, second, millisecond] Ví dụ: moment([2010, 1, 14, 15, 25, 50, 125]); // February 14th, 3:25:50.125 PM
+
+    UTC
+    Cú pháp:
+
+    moment.utc();
+    moment.utc(Number);
+    moment.utc(Number[]);
+    moment.utc(String);
+    moment.utc(String, String);
+    moment.utc(String, String[]);
+    moment.utc(String, String, String);
+    moment.utc(String, String, Boolean);
+    moment.utc(String, String, String, Boolean);
+    moment.utc(Moment);
+    moment.utc(Date);
+    Theo mặc định, moment phân tích thời gian và hiển thị theo giờ của local. Nếu bạn muốn parse hay display moment theo UTC, bạn có thể sưr dụng moment.utc().
+
+    Get + Set
+    Moment.js sử dụng overload getters, setters. Bạn có thể quen thuộc với pattern này từ việc sử dụng nó trong jQuery.
+    Millisecond
+    Cú pháp:
+    moment().millisecond(Number);
+    moment().millisecond(); // Number
+    moment().milliseconds(Number);
+    moment().milliseconds(); // Number
+    Lấy hoặc thiết lập mili giây. Chấp nhận số từ 0 đến 999.
+    Second
+    Cú pháp:
+    moment().second(Number);
+    moment().second(); // Number
+    moment().seconds(Number);
+    moment().seconds(); // Number
+    Lấy hoặc thiết lập giây. Chấp nhận số từ 0 đến 59.
+    Minute
+    Cú pháp:
+    moment().minute(Number);
+    moment().minute(); // Number
+    moment().minutes(Number);
+    moment().minutes(); // Number
+    Lấy hoặc thiết lập phút. Chấp nhận số từ 0 đến 59.
+    Hour
+    Cú pháp:
+    moment().hour(Number);
+    moment().hour(); // Number
+    moment().hours(Number);
+    moment().hours(); // Number
+    Lấy hoặc thiết lập giờ. Chấp nhận số từ 0 đến 23.
+    Date of Month
+    Cú pháp:
+    moment().date(Number);
+    moment().date(); // Number
+    moment().dates(Number);
+    moment().dates(); // Number
+    Lấy hoặc thiết lập ngày của tháng. Chấp nhận số từ 0 đến 31.
+    Month
+    Cú pháp:
+    moment().month(Number|String);
+    moment().month(); // Number
+    moment().months(Number|String);
+    moment().months(); // Number
+    Lấy hoặc thiết lập tháng. Chấp nhận số từ 0 đến 11. Tháng không được lập chỉ mục, vì vậy January là tháng 0.
+    Year
+    Cú pháp:
+    moment().year(Number);
+    moment().year(); // Number
+    moment().years(Number);
+    moment().years(); // Number
+    Lấy hoặc thiết lập năm. Chấp nhận số từ -270000 đến 270000.
+    Get
+    Cú pháp:
+    moment().get('year');
+    moment().get('month');  // 0 to 11
+    moment().get('date');
+    moment().get('hour');
+    moment().get('minute');
+    moment().get('second');
+    moment().get('millisecond');
+    Set
+    Cú pháp:
+    moment().set(String, Int);
+    moment().set(Object(String, Int));
+    Ví dụ:
+    moment().set('year', 2013);
+    moment().set('month', 3);  // April
+    moment().set('date', 1);
+    moment().set('hour', 13);
+    moment().set('minute', 20);
+    moment().set('second', 30);
+    moment().set('millisecond', 123);
+
+    moment().set({'year': 2013, 'month': 3});
+    Manipulate
+    Một khi bạn đã có một moment, bạn có thể muốn thao tác nó. Có một số phương pháp để hỗ trợ thực thi.
+    Add
+    Cú pháp:
+    moment().add(Number, String);
+    moment().add(Duration);
+    moment().add(Object);
+    Đây là một chức năng khá mạnh mẽ để thêm thời gian vào một moment. Để thêm thời gian hãy thêm giá trị cùng với keys phù hợp Ví dụ: moment().add(7, 'days');
+    Subtract
+    Cú pháp:
+    moment().subtract(Number, String);
+    moment().subtract(Duration);
+    moment().subtract(Object);
+    Đây là chức năng cộng thêm 1 khoảng thời gian chỉ định cho moment Ví dụ: moment().subtract(7, 'days');
+    Start of Time
+    Cú pháp: moment().startOf(String); Làm biến đổi moment bằng cách thiết lập nó vào đầu của một đơn vị thời gian. Ví dụ:
+    moment().startOf('year');    // set to January 1st, 12:00 am this year
+    moment().startOf('month');   // set to the first of this month, 12:00 am
+    moment().startOf('quarter');  // set to the beginning of the current quarter, 1st day of months, 12:00 am
+    moment().startOf('week');    // set to the first day of this week, 12:00 am
+    moment().startOf('isoWeek'); // set to the first day of this week according to ISO 8601, 12:00 am
+    moment().startOf('day');     // set to 12:00 am today
+    moment().startOf('date');     // set to 12:00 am today
+    moment().startOf('hour');    // set to now, but with 0 mins, 0 secs, and 0 ms
+    moment().startOf('minute');  // set to now, but with 0 seconds and 0 milliseconds
+    moment().startOf('second');  // same as moment().milliseconds(0);
+    End of Time
+    Cú pháp: moment().endOf(String); Làm biến đổi moment bằng cách thiết lập nó vào cuối của một đơn vị thời gian. Ví dụ: moment().endOf("year"); // set the moment to 12-31 23:59:59.999 this year
+    Display
+    Sau khi phân tích cú pháp và thao tác được thực hiện, bạn cần một số cách để hiển thị thời điểm.
+    Format
+    Cú pháp:
+    moment().format();
+    moment().format(String);
+    Ví dụ:
+    moment().format();                                // "2014-09-08T08:02:17-05:00" (ISO 8601)
+    moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
+    moment().format("ddd, hA");                       // "Sun, 3PM"
+    moment('gibberish').format('YYYY MM DD');         // "Invalid date"
+    Difference
+    Cú pháp:
+    moment().diff(Moment|String|Number|Date|Array);
+    moment().diff(Moment|String|Number|Date|Array, String);
+    moment().diff(Moment|String|Number|Date|Array, String, Boolean);
+    Để có được sự khác biệt trong mili giây, sử dụng moment#diff như bạn sẽ sử dụng moment#from. Ví dụ:
+    var a = moment([2007, 0, 29]);
+    var b = moment([2007, 0, 28]);
+    a.diff(b) // 86400000
+    Days in Month
+    Cú pháp: moment().daysInMonth(); Get số ngày trong tháng hiện tại. Ví dụ:
+    moment("2012-02", "YYYY-MM").daysInMonth() // 29
+    moment("2012-01", "YYYY-MM").daysInMonth() // 31
+    As Javascript Date
+    Cú pháp: moment().toDate(); Để lấy một bản sao của đối tượng Date mà Moment.js wraps, hãy sử dụng moment # toDate.
+    As Array
+    Cú pháp: moment().toArray(); Điều này trả về một mảng số tham chiếu từ các tham số new Date(). Ví dụ: moment().toArray(); // [2013, 1, 4, 14, 40, 16, 154];
+    As String
+    Cú pháp: moment().toString(); Trả về một chuỗi tiếng Anh ở định dạng tương tự như .toString () của JS Date. Ví dụ: moment().toString() // "Sat Apr 30 2016 16:59:46 GMT-0500"
+</code></pre>
+    </article>
+</body>
+</html>

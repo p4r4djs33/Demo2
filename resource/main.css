@@ -1,0 +1,73 @@
+body {
+    margin: 0px;
+    background: #ff9966; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #ff5e62, #ff9966); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+header h1 {
+    text-align: center;
+    color: white;
+    
+}
+nav {
+    position: sticky;
+    top: 0px;
+}
+nav ul {
+    list-style-type: none;
+    background-color: burlywood;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom:20px;
+
+}
+
+    nav ul li {
+        float: left;
+
+    }
+
+        nav ul li a {
+            font-size:20px;
+            text-decoration: none;
+            display: block;
+            color: white;
+            padding: 0 15px;
+            text-align: center;
+            
+
+        }
+
+            nav ul li a:hover {
+                background-color: white;
+                color: black;
+            }
+
+article {
+    padding: 15px;
+    width: auto;
+    height:auto;
+    background-color: lightsalmon;
+}
+
+nav .nav-active {
+    background-color: white;
+    color: black;
+}
+
+article pre code {
+    white-space:pre-wrap;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    nav ul li {
+        float: none;
+        text-align: center;
+    }
+}
